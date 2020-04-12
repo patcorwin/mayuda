@@ -15,4 +15,4 @@ try:
 except Exception:
     import traceback
     print( traceback.format_exc() )
-    warning('En error occurred in mayaPaco use')
+    warning('An error occurred in mayaPaco use')
