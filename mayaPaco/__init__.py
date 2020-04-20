@@ -54,4 +54,3 @@ def alwaysSelected():
         print( traceback.format_exc() )
 
 
-scriptJob( e=("SelectionChanged", alwaysSelected) )
