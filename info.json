@@ -1,4 +1,22 @@
 {
-    "utc_build_time": "2020-04-12 22:29:31.228638",
-    "description": "Convenience utilities for easier live scripting in Maya"
+    "utc_build_time": "2020-08-15 10:29:26.968061",
+    "description": "Convenience utilities for Maya",
+    "icon_paths": ["mayuda/icons"],
+    "shelf_items": [
+        {
+            "command": "import mayuda;mayuda.reopen()",
+            "image": "reopen.png",
+            "annotation": "Reopen this file, regardless of save state"
+        },
+        {
+            "command": "import mayuda;mayuda.openFromClipboard()",
+            "image": "loadFromClipboard.png",
+            "annotation": "Load the filename in the clipboard"
+        },
+        {
+            "command": "import mayuda;mayuda.openFolder()",
+            "image": "openFolder.png",
+            "annotation": "Open the folder of this file"
+        }
+    ]
 }
