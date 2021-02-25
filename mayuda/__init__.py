@@ -76,15 +76,15 @@ def openFromClipboard():
     
     global filepathProcessors
     
-    filepath = Path(QtGui.QClipboard().text().strip())
+    filepath = QtGui.QClipboard().text().strip()
     
     # Strip out quotes (windows adds them when copying a filepath from explorer)
     if filepath.startswith(('"', "'")):
         filepath = filepath[1:]
-    if filepath.endsswith(('"', "'")):
+    if filepath.endswith(('"', "'")):
         filepath = filepath[:-1]
     
-    filepath = os.path.expandvars( os.path.expanduser(filepath) )
+    filepath = Path(os.path.expandvars( os.path.expanduser(filepath) ))
     
     
     if not os.path.exists(filepath):
@@ -104,7 +104,7 @@ def openFromClipboard():
     if filepath.ext.lower() == '.ma':
         fileType = 'mayaAscii'
     
-    mel.addRecentFile(filepath.cannonicalPath(), fileType)
+    mel.addRecentFile(str(filepath).replace('\\', '/'), fileType)  # On windows, must be forward slashes
 
     openFile( filepath, f=True )
     
