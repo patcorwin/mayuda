@@ -104,9 +104,11 @@ def openFromClipboard():
     if filepath.ext.lower() == '.ma':
         fileType = 'mayaAscii'
     
-    mel.addRecentFile(str(filepath).replace('\\', '/'), fileType)  # On windows, must be forward slashes
-
-    openFile( filepath, f=True )
+    if os.path.isfile(filepath):
+        openFile( filepath, f=True )
+        mel.addRecentFile(str(filepath).replace('\\', '/'), fileType)  # On windows, must be forward slashes
+    else:
+        warning(filepath + ' is not a file')
     
     
 def openFolder():
