@@ -10,10 +10,20 @@ try: # python3 prep
     reload
 except NameError:
     from importlib import reload
-    
-from PySide2 import QtGui
 
-from pymel.core import mel, openFile, Path, sceneName, selected, warning
+
+try:
+    from PySide6 import QtGui
+except ModuleNotFoundError:
+    from PySide2 import QtGui
+
+
+PM_ACTIVE = False
+try:
+    from pymel.core import mel, openFile, Path, sceneName, selected, warning
+    PM_ACTIVE = True
+except ImportError:
+    PM_ACTIVE = False
 
 
 class FullReload(object):
